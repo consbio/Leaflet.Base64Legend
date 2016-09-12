@@ -1,0 +1,39 @@
+.leaflet-legend {
+    background: #FFF;
+    padding: 6px;
+    max-height: 250px; /* TODO */
+    overflow-y: auto;
+    font-size: 1.2em;
+}
+
+.leaflet-legend h4 {
+    margin: 0 0 4px 0;
+}
+
+.leaflet-legend img {
+    margin-right: 6px;
+    display: inline;
+    vertical-align: middle;
+}
+
+.leaflet-legend label {
+    max-width: 200px;
+    /* TODO: white space breaking */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.legend-block + .legend-block {
+    margin-top: 8px;
+    border-top: 1px solid #EEE;
+    padding-top: 4px;
+}
+
+.legend-row {
+    line-height: 1;
+}
+
+.legend-row + .legend-row {
+    margin-top: 4px;
+}
+
