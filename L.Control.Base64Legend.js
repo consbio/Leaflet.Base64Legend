@@ -18,6 +18,22 @@ L.Control.Base64Legend = L.Control.extend({
             L.DomEvent.disableScrollPropagation(container);
         }
 
+        if (this.options.layer) {
+            map.on('layeradd', function(e){
+                if (e.layer == this.options.layer) {
+                    this._container.style.display = '';
+                }
+            }.bind(this)).on('layerremove', function(e){
+                if (e.layer == this.options.layer) {
+                    this._container.style.display = 'none';
+                }
+            }.bind(this));
+
+            if (!map.hasLayer(this.options.layer)) {
+                this._container.style.display = 'none';
+            }
+        }
+
         this.render();
 
 
@@ -42,9 +58,9 @@ L.Control.Base64Legend = L.Control.extend({
     render: function () {
         L.DomUtil.empty(this._container);
         var legends = this.options.legends;
-        
+
         console.log('legend entries', legends)
-        
+
         if (!legends) return;
 
         legends.forEach(function(legend) {

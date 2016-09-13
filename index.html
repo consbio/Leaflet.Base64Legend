@@ -14,12 +14,25 @@
     <script>
         var map = L.map('map').setView([44.07, -118.78], 5);
 
-        L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
+        var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        });
+
+        var stamen = L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
             attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
             subdomains: 'abcd',
             maxZoom: 10,
             minZoom: 2
-        }).addTo(map);
+        });
+
+        var baseLayers = {
+            "Stamen": stamen,
+            "OpenStreetMap": osm
+        };
+
+        L.control.layers(baseLayers).addTo(map);
+
+        stamen.addTo(map);
 
         var legends1 = [{"elements": [{"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAO5JREFUOI3NlD0OgzAMhd+AIliYsnhHbD4Np+QwnVgjBq4QIeypHarQ0ECBlqFvc5R8evFf1rbtHRcqi4O+7zGO4+bluq4hIhiGIYmZ+QXsug4AYK39CBQR5HmexOE9My8dEhGIaPdbwU1Q0zQQkZdDay2maQIAlGUJY8wuFAC891DVhfMsOAsyxqCqqkNA5xxUdc7p/OU4B78q27/yBTDO4SXAI5U9Bfz/HP6quAaXAOMaXALcnGXgOU7OuUMg731ylgBVFap6yuFqDuMVRkRzvCVmXuzPxT6M++/MxBRFkezP2eF7Ux9p8pX9eXsAPNt0X7NgcsoAAAAASUVORK5CYII="}], "name": "All States"}]
 
@@ -31,7 +44,8 @@
         var legend = L.control.base64legend({
             position: 'bottomright',
             legends: legends,
-            collapseSimple: true
+            collapseSimple: true,
+            layer: osm
         });
 
         map.addControl(legend);
