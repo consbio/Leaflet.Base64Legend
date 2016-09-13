@@ -6,6 +6,12 @@
     <link rel="stylesheet"
           href="//unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css"/>
     <link rel="stylesheet" href="L.Control.Base64Legend.css"/>
+    <style>
+        .leaflet-legend {
+            width: 240px;
+            max-height: 300px;
+        }
+    </style>
 </head>
 <body>
 <script src="//unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet-src.js"></script>
@@ -212,7 +218,7 @@
     ];
 
     var legend = L.control.base64legend({
-        position: 'bottomright',
+        position: 'topright',
         legends: legends,
         collapseSimple: true
     });

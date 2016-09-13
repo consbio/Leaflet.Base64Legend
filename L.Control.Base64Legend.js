@@ -2,12 +2,11 @@ L.Control.Base64Legend = L.Control.extend({
     _map: null,
     includes: L.Mixin.Events,
     options: {
-        position: 'bottomright',
-        legends: [],   // array of legend entries
+        position: 'topright',
+        legends: [],   // array of legend entries - see README for format
         collapseSimple: false  // if true, legend entries that are from a simple renderer will use compact presentation
     },
     onAdd: function (map) {
-        console.log('onAdd')
         this._map = map;
         var container = L.DomUtil.create('div', 'leaflet-control leaflet-bar leaflet-legend');
         this._container = container;
@@ -19,22 +18,7 @@ L.Control.Base64Legend = L.Control.extend({
         }
 
         this.render();
-
-
-        // TODO: if mouse enter / leave events are needed, uncomment this
-        // L.DomEvent.on(container, 'mouseenter', function() {
-        //     // TODO
-        // }, this);
-        //
-        // L.DomEvent.on(container, 'mouseleave', function() {
-        //     // TODO
-        // }, this);
-
-
-        // TODO: if this plugin provides events, adapt the following
-        // this.fire('event_name', {event data obj});
-
-
+        
         return this._container;
     },
 
@@ -43,19 +27,17 @@ L.Control.Base64Legend = L.Control.extend({
         L.DomUtil.empty(this._container);
         var legends = this.options.legends;
         
-        console.log('legend entries', legends)
-        
         if (!legends) return;
 
         legends.forEach(function(legend) {
+            if (!legend.elements) return;
+
             var className = 'legend-block';
             if (legend.type === 'stretched') {
                 className += ' legend-stretched';
             }
 
             var block = L.DomUtil.create('div', className, this._container);
-            // TODO: allow block to be expanded / contracted by clicking on
-            // header, and have a default state from data
 
             if (this.options.collapseSimple && legend.elements.length == 1 && !legend.elements[0].label){
                 this._addElement(legend.elements[0].imageData, legend.name, block);
@@ -63,12 +45,26 @@ L.Control.Base64Legend = L.Control.extend({
             }
 
             if (legend.name) {
+                // L.DomUtil.create('div', 'caret caret-down', block);
                 var header = L.DomUtil.create('h4', null, block);
-                header.innerHTML = legend.name;
+                L.DomUtil.create('div', 'caret', header);
+                // header.innerHTML = '<span class="caret caret-down"></span>' + legend.name;
+                // header.innerHTML = legend.name;
+                L.DomUtil.create('span', null, header).innerHTML = legend.name;
+
+                L.DomEvent.on(header, 'click', function() {
+                    if (L.DomUtil.hasClass(header, 'closed')) {
+                        L.DomUtil.removeClass(header, 'closed');
+                    }
+                    else {
+                        L.DomUtil.addClass(header, 'closed');
+                    }
+                }, this);
             }
+            var elementContainer = L.DomUtil.create('div', 'legend-elements', block);
 
             legend.elements.forEach(function (element) {
-                this._addElement(element.imageData, element.label, block);
+                this._addElement(element.imageData, element.label, elementContainer);
             }, this);
         }, this);
     },
