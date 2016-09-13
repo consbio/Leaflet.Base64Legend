@@ -1,5 +1,6 @@
 .leaflet-legend {
     background: #FFF;
+    border: 2px solid #FFF;
     padding: 6px;
     max-height: 250px; /* TODO */
     overflow-y: auto;
@@ -18,11 +19,15 @@
 
 .leaflet-legend label {
     max-width: 200px;
-    /* TODO: white space breaking */
     display: inline-block;
     vertical-align: middle;
+    word-wrap: break-word;
 }
 
+.legend-block {
+    margin-right: 7px;
+    width: 100%;
+}
 .legend-block + .legend-block {
     margin-top: 8px;
     border-top: 1px solid #EEE;
@@ -37,3 +42,20 @@
     margin-top: 4px;
 }
 
+.legend-stretched .legend-row + .legend-row {
+    margin-top: 0;
+}
+
+/* force OSX to show a scrollbar */
+.leaflet-legend::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+.leaflet-legend::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+.leaflet-legend::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.7);
+}

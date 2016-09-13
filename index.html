@@ -3,39 +3,222 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Leaflet.Base64Legend Example</title>
-    <link rel="stylesheet" href="//unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
-    <link rel="stylesheet" href="L.Control.Base64Legend.css" />
+    <link rel="stylesheet"
+          href="//unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="L.Control.Base64Legend.css"/>
 </head>
 <body>
-    <script src="//unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet-src.js"></script>
-    <script src="L.Control.Base64Legend.js"></script>
-    <div id="map" style="position: absolute; top: 0; left:0; bottom:0; right: 0;"></div>
+<script src="//unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet-src.js"></script>
+<script src="L.Control.Base64Legend.js"></script>
+<div id="map"
+     style="position: absolute; top: 0; left:0; bottom:0; right: 0;"></div>
 
-    <script>
-        var map = L.map('map').setView([44.07, -118.78], 5);
+<script>
+    var map = L.map('map').setView([44.07, -118.78], 5);
 
-        L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
-            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-            subdomains: 'abcd',
-            maxZoom: 10,
-            minZoom: 2
-        }).addTo(map);
+    L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
+        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        subdomains: 'abcd',
+        maxZoom: 10,
+        minZoom: 2
+    }).addTo(map);
 
-        var legends1 = [{"elements": [{"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAO5JREFUOI3NlD0OgzAMhd+AIliYsnhHbD4Np+QwnVgjBq4QIeypHarQ0ECBlqFvc5R8evFf1rbtHRcqi4O+7zGO4+bluq4hIhiGIYmZ+QXsug4AYK39CBQR5HmexOE9My8dEhGIaPdbwU1Q0zQQkZdDay2maQIAlGUJY8wuFAC891DVhfMsOAsyxqCqqkNA5xxUdc7p/OU4B78q27/yBTDO4SXAI5U9Bfz/HP6quAaXAOMaXALcnGXgOU7OuUMg731ylgBVFap6yuFqDuMVRkRzvCVmXuzPxT6M++/MxBRFkezP2eF7Ux9p8pX9eXsAPNt0X7NgcsoAAAAASUVORK5CYII="}], "name": "All States"}]
+    var legends = [
+        {
+            "name": "A simple element",
+            "elements": [{"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAO5JREFUOI3NlD0OgzAMhd+AIliYsnhHbD4Np+QwnVgjBq4QIeypHarQ0ECBlqFvc5R8evFf1rbtHRcqi4O+7zGO4+bluq4hIhiGIYmZ+QXsug4AYK39CBQR5HmexOE9My8dEhGIaPdbwU1Q0zQQkZdDay2maQIAlGUJY8wuFAC891DVhfMsOAsyxqCqqkNA5xxUdc7p/OU4B78q27/yBTDO4SXAI5U9Bfz/HP6quAaXAOMaXALcnGXgOU7OuUMg731ylgBVFap6yuFqDuMVRkRzvCVmXuzPxT6M++/MxBRFkezP2eF7Ux9p8pX9eXsAPNt0X7NgcsoAAAAASUVORK5CYII="}]
+        },
+        {
+            "name": "A longer legend",
+            "elements": [{
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3Nychq0VAXrRYS5yDLs/uNPDDk5OQxTpkxpgLtQRJiLQVNNlGwXPn76mQHuQmqCUQNHDRw1cJgZeP/xJ7INefP2G6qBU6ZMacjJyYEXQeQAlAIWWYBSAABjPiDfvMzQCwAAAABJRU5ErkJggg==",
+                "label": "Alabama"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1LEJgDAUBNArLBTcIOAQgiC40u3gH+JWS+wFRxBbK4NpEyvJVZ9fPK66Bh+neQ6SVgJJsgiStGU+V+euLMyHHiQhyWJD5y5M457Zb4DfWsSGX6aCFazgz0AfegBDFnIcXQpKMpJxgnKSDOz7UZobwRof/EtWWjIAAAAASUVORK5CYII=",
+                "label": "Alaska"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHdJREFUOI3t1LEJgDAUBNArAqKFigOIE2Sy28E/xE3mEhY2ghKwszJoG60kV31+8bjqHD6Ouw6S9gaSZBEkaX2zjW0RkrB5r0ESkiw2bIuAoZsS+3ksoURs+GUymMEM/gyc9xqAT0LWo3qCkoxknKCUPAb2/nibEz9YID+C5WnLAAAAAElFTkSuQmCC",
+                "label": "American Samoa"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychrMjdnqJSWYyTLs+s1fDDk5OQxTpkxpgLtQUoKZwUifnWwX3rzznQHuQmqCUQNHDRw1cJgZeP3mL7INef7iL6qBU6ZMacjJyYEXQeQAlAIWWYBSAABdnCDEK8+a1AAAAABJRU5ErkJggg==",
+                "label": "Arizona"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHVJREFUOI3t1DEKgDAUA9BAdREHFwcRPGHu4D9ELimIKIiLCE4Wu9ZO0kyfPzwypUDiFM9B0r5AksyDJK1vz7GpryhsWkqQhCTzDZv6wtAdkf0qzJuDb5gyGcxgBn8GTksJoIpC1t2FoCQj6ScoJsHAvh9fcwNwuCAJfF06ZQAAAABJRU5ErkJggg==",
+                "label": "Arkansas"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHhJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3Nychqs5L/USwt9I8uwq0/5GHJychimTJnSAHehtNA3BhPFW2S6T43h2isOBrgLqQlGDRw1cNTAYWbg1ad8DAwMamQZ8vQdF6qBU6ZMacjJyYEXQeQAlAIWWYBSAABD3yAXz6ciHQAAAABJRU5ErkJggg==",
+                "label": "California"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHNJREFUOI3t1CEOgDAUA9AKEswU0wgIx+sd+IfoDbcQDBKBQ7Ewu6HIqn6+eKlqh4/TPQdJq4EkWQJJ2jKdq/dXERaiA0lIstTQ+wvLHAr7jdj2Aanhl2lgAxv4MzBEB2AsQo6jz0FJRjJNUEmygX0/anMDJu8gLm+NUC0AAAAASUVORK5CYII=",
+                "label": "Colorado"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychpsrSXqZaS5yTLs8tW3DDk5OQxTpkxpgLtQRpqbwdRUimwXXrn6gQHuQmqCUQNHDRw1cJgZePnqW7INefL0K6qBU6ZMacjJyYEXQeQAlAIWWYBSAABHTiC+xEdgBwAAAABJRU5ErkJggg==",
+                "label": "Commonwealth of the Northern Mariana Islands"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEOgDAUA9AmDIPEYQkXQHCr3oF/iB6O4Jc5JIaQoFiYHSiyqp8vXqrq8HHcfZC0N5AkiyBJm/pj7tozC1t8DZKQZLFh154Yhz2zX4M1VIgNv0wBC1jAn4GLrwE0WUjYqhSUZCTjBOUkGdjn420uREUf8WHpWb0AAAAASUVORK5CYII=",
+                "label": "Connecticut"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHNJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3Nychq01DnqRURY8GrCBe4/+MmQk5PDMGXKlAa4CSIiLAyaauxku/Dx098McBdSE4waOGrgqIHDzMD7D36SbcibN39QDZwyZUpDTk4OvAgiB6AUsMgClAIABEEg3T001t0AAAAASUVORK5CYII=",
+                "label": "Delaware"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHVJREFUOI3t1CEKgEAUBNAJYtighk2ieMG5g/8Qc0dBFhGLYDK5aF1NspM+PzwmTYGPU1wHSXsDSbIIkrS+3cemOpKwaXYgCUkWGzbVgaELif08wlIjNvwyGcxgBn8GTrMD4JOQdSufoCQjGScoJY+BvT/e5gS/+CApAODx9AAAAABJRU5ErkJggg==",
+                "label": "District of Columbia"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHBJREFUOI3t1CEOgDAQBMATDYpSh4CEF+4fuEfsJyuaQBBNUCgaatsq0lWXE5NVa6RxzHsA0BqIpCYQgK7zuDs7FGE+RAEgJDU1dHaQbZmKG4YjSmrYMh3sYAd/BvoQi5HzunOQpAJIE1SSbGC/j9o8jvIg869XoCgAAAAASUVORK5CYII=",
+                "label": "Florida"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHNJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqsNFjrpUVY8GrCBa4++MWQk5PDMGXKlAa4CdIiLAwmGmxku/Dak+8McBdSE4waOGrgqIHDzMCrD36RbcjTN39QDZwyZUpDTk4OvAgiB6AUsMgClAIAPHIgyFuh12MAAAAASUVORK5CYII=",
+                "label": "Georgia"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHFJREFUOI3t1CEOgDAUA9CyoDAzCBISTtg78A/RSyJIBgK5oFgAuaHIqn6+eKlqi4/TXgdJK4EkWQJJ2ti72Xd52BIiSEKSpYa+A6ahyeznsO4RqeGXqWAFK/gzcAkRgMtCtuMFSjKSaYJy8hjY+6M0J3C6H/m7koqKAAAAAElFTkSuQmCC",
+                "label": "Guam"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHhJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqMNb7US4h+I8uwm/f5GHJychimTJnSAHehhOg3Bn2NW2S6T43hzhMOBrgLqQlGDRw1cNTAYWbgzft8DAwMamQZ8uI1F6qBU6ZMacjJyYEXQeQAlAIWWYBSAABNMCAXkE9UdgAAAABJRU5ErkJggg==",
+                "label": "Hawaii"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqsLX/XS0v9Jcuwq9fYGHJychimTJnSAHehtNRfBlOT72S78Op1Dga4C6kJRg0cNXDUwGFm4NVrbGQb8vQZM6qBU6ZMacjJyYEXQeQAlAIWWYBSAAC81h/XYNsVbAAAAABJRU5ErkJggg==",
+                "label": "Idaho"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3t1DEKgDAUA9BAxV3oKrjq2XIH/yFyPweHDgruQsHJYtfqJM30+cMjUxp8nOY+SNobSJIlkKRNvZt954qwJUSQhCRLDX3nMA5tYb8T6xaRGn6ZClawgj8DlxABnEXIfsQclGQk0wSVJBvY5+NtLq49It0S21iDAAAAAElFTkSuQmCC",
+                "label": "Illinois"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqsDcXqpSV4yDLs6q13DDk5OQxTpkxpgLtQWoKHwVRXimwXXr37gQHuQmqCUQNHDRw1cJgZePXWO7INefriC6qBU6ZMacjJyYEXQeQAlAIWWYBSAAAUSSDHlzF1TAAAAABJRU5ErkJggg==",
+                "label": "Indiana"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEKgEAUBNAJG0RYk0kwGfRwcwf/IeZ6BsGmWBSzyUXrapKd9PnhMWkcPo67DpL2BpJkASRpbbX3pT+isHEuQBKSLDQs/YGuHiL7NZjWDKHhl0lgAhP4M3CcCwBNFLJs+ROUZCTDBMXkMbD3x9ucwUIgKCFLDNIAAAAASUVORK5CYII=",
+                "label": "Iowa"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHdJREFUOI3tlCEOgDAQBFc0TRBU1ZGg4W/7B/qI+x8GRcCABIEgHGBLFemoy4nJqDVIjLkOkuGLSESCCkmGtto67/YoWT9akISIBC30bkdTr5F9JYa5gBamJAuzMAt/JuxHC6CMkkzL3WWAcxxJ6gTF8BrY5+MrB/LXIA7fYk0EAAAAAElFTkSuQmCC",
+                "label": "Kansas"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqsLRXqpaUEyTLs6rWnDDk5OQxTpkxpgLtQWkqQwdREiWwXXr3+igHuQmqCUQNHDRw1cJgZePXaU7INefrsPaqBU6ZMacjJyYEXQeQAlAIWWYBSAAB7yiC9RwZEWwAAAABJRU5ErkJggg==",
+                "label": "Kentucky"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHNJREFUOI3t1DEKgDAUA9CgQnfdRcTj5Q7+Q+SIoiDo7mBxsti1Okkzff7wyJQKH6e6D5L2BpJkASRpfXuOTe2TsGkuQRKSLDRsao+hOxL7OSxrgdDwy2Qwgxn8GTjNJQCXhGx7EYOSjGSYoJREA/t8vM0F2Bwf943gsPwAAAAASUVORK5CYII=",
+                "label": "Louisiana"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHhJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqMtb/XS4j+Isuwm/c4GXJychimTJnSAHehhOgvBn2tV2S6T4zhziM2BrgLqQlGDRw1cNTAYWbgzXucDAwMYmQZ8uI1G6qBU6ZMacjJyYEXQeQAlAIWWYBSAABbmx//EnO/8QAAAABJRU5ErkJggg==",
+                "label": "Maine"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAG9JREFUOI3t1LENgCAUBNCfSFwAZkCHux38Q9yCEO10AAsSK4m0QGW46ucXL1edkc4x7wFAWyCSmkEAuvi0OZuqsBCNABCSmhs6m2T1d3XD/ZglN+yZAQ5wgD8DQ6y3z2sqQZIKIE9QTYqB/T5a8wD6iR/t13QryAAAAABJRU5ErkJggg==",
+                "label": "Maryland"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHNJREFUOI3t1DEKgDAUA9AMQheR4qjgCXMH/yFyRkFwcKnQzcli19ZJmunzh0emdPg43XOQtBpIkiWQpM1DWL2LRdgeepCEJEsNvYtY/FbYb8JxjUgNv0wDG9jAn4F76AFMRcgZXQ5KMpJpgkqSDez7UZsbbycgPmjCgxUAAAAASUVORK5CYII=",
+                "label": "Massachusetts"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3t1LENgDAQA0BHMAXKDjRQspF34IfwZiCloEVsgUJFRNpAheLq9cXJlVt8nPY+SNobSJIlkKRNQ5x9F4uwJTiQhCRLDX0XMfZnYb8G6+aQGn6ZClawgj8Dl+AANEXIfrgclGQk0wSVJBvY5+NtLrwUH872hb1yAAAAAElFTkSuQmCC",
+                "label": "Michigan"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHdJREFUOI3t1KENgDAUBNAThJDUYkgXYAEUK90O/CFutXoEBIOnEkUDtqBIT/188XLqKnyc6jpI2htIkiWQpI39Mfk2ZmFhdiAJSZYa+jZi6LfMfh3CUiM1/DIFLGABfwaG2QHospB1b56gJCOZJignj4G9P97mBHLVIAFKsL/mAAAAAElFTkSuQmCC",
+                "label": "Minnesota"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEKgEAUBNAJBsENFsEi4v3mDv5DzP2MFmEVFIwmF7euJtlJnx8ek6bAxynug6S9gSRZAEla1+xjXZ1J2OwdSEKShYZ1daJvp8R+A5atRGj4ZTKYwQz+DJy9AzAkIetRxqAkIxkmKCXRwD4fb3MBaFggK3xjDMEAAAAASUVORK5CYII=",
+                "label": "Mississippi"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychrMDeXrJSWEyDLs+q2nDDk5OQxTpkxpgLtQUkKIwUhXkWwX3rz7igHuQmqCUQNHDRw1cJgZeP3WU7INef7iHaqBU6ZMacjJyYEXQeQAlAIWWYBSAAA3dyDCckDcOAAAAABJRU5ErkJggg==",
+                "label": "Missouri"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI3t1C0OgDAMhuGKge4F+Dngdwd6iO+OEyDmSBYEioUJEBuK7FXLkj6pqpOPc9cDgNVAJC2BAGwcukXVvQ495X0UAELSkqDqZJ764g3XbZe04Zc1sIEN/BnofSxGQjhykKQBSCeopOzA3j9qOwFtkSDhp7unvQAAAABJRU5ErkJggg==",
+                "label": "Montana"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1KERgDAUA9CIQiUGiYYJkGyUHfhDZDMYAAEOg61C0QNbUFyj/n3xLioOH8ddB0l7A0myCJK0oQtjU4ckbFo8SEKSxYZNHdC3R2K/CvNWIDb8MhnMYAZ/Bk6LB1AlIetePkFJRjJOUEoeA3t/vM0Ja1of7tM8LdsAAAAASUVORK5CYII=",
+                "label": "Nebraska"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqsjPjrpcU5yTLs6q1PDDk5OQxTpkxpgLtQWpyTwURfkGwXXrv7jQHuQmqCUQNHDRw1cJgZePXWJ7INefryO6qBU6ZMacjJyYEXQeQAlAIWWYBSAADZ0iDKFsXFGQAAAABJRU5ErkJggg==",
+                "label": "Nevada"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1KENgDAUBNATGAiiQWBIWIHFbgf+ELcYYzRBQCBoFA21LYr01M8XL6euwsepnoOk5UCSLIAkbeiO2TVnEuZ3B5KQZKGha06M/ZLYb8J61AgNv0wBC1jAn4F+dwCmJGS72hiUZCTDBKUkGtj3Izc3T/YgQUL8cRUAAAAASUVORK5CYII=",
+                "label": "New Hampshire"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEOgDAUA9CKCYKZgkMAgoP1DvxD9GyYJRAsSBI0igXsQJFV/XzxUlWHj+Oug6S9gSRZBEla3+1DXR1JWJg8SEKSxYZ1daBrx8R+DealQGz4ZTKYwQz+DAyTB9AkIetWPkFJRjJOUEoeA3t/vM0JR+8gHbHAERoAAAAASUVORK5CYII=",
+                "label": "New Jersey"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychoMVH/XS4j8JcuwW4/YGHJychimTJnSAHehhMhfBl2172S78N5TDga4C6kJRg0cNXDUwGFm4K1HbGQb8uINM6qBU6ZMacjJyYEXQeQAlAIWWYBSAAApph/pkT9qjAAAAABJRU5ErkJggg==",
+                "label": "New Mexico"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychpMTXjqJSXYyDLsxs3vDDk5OQxTpkxpgLtQUoKNwVCfj2wX3rr9nQHuQmqCUQNHDRw1cJgZeOPmd7INef7iF6qBU6ZMacjJyYEXQeQAlAIWWYBSAACsDSDOf6EmywAAAABJRU5ErkJggg==",
+                "label": "New York"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3Nychp01STqRUV4yDLs7sO3DDk5OQxTpkxpgLtQVISHQVtNmmwXPnz6ngHuQmqCUQNHDRw1cJgZePfhW7INef3mC6qBU6ZMacjJyYEXQeQAlAIWWYBSAACaSCDYi4kBOQAAAABJRU5ErkJggg==",
+                "label": "North Carolina"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAG9JREFUOI3t1LENgCAUBNAfZATYgehqt4N/iJvPEGOnK0CsJNoCleGqn1+8XHVWOsc+BwBtgUhqAQHoEqbVO1OFbTEJACGppaF3RuYwVTfcjyylYc8McIAD/Bm4xVSNnFf+giQVQJmgmnwG9v1ozQ38PyDgWKDwogAAAABJRU5ErkJggg==",
+                "label": "North Dakota"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3Nychp0FZnrRYWZyDLs7tO/DDk5OQxTpkxpgLtQVJiJQVuJmWwXPnz+jwHuQmqCUQNHDRw1cJgZePfpX7INef32H6qBU6ZMacjJyYEXQeQAlAIWWYBSAADfsyDhTpO2QgAAAABJRU5ErkJggg==",
+                "label": "Ohio"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEOgDAUA9AKBGECM8EJINnZegf+IXo2PAKHgBDQKBawA0VW9fPFS1ULfJziOkjaG0iSRZCktX7rvTuSsHGpQRKSLDb07kDXDIn9Aqa1RGz4ZTKYwQz+DByXGkBIQua9eoKSjGScoJQ8Bvb+eJsToNEgM71yhi8AAAAASUVORK5CYII=",
+                "label": "Oklahoma"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHdJREFUOI3t1LEJgDAUBNAr0igotoKIEzjZ7eAf4iZziRSKCEJqK4O20Upy1ecXj6vO4eO46yBpbyBJFkGS1rfH1FQhCfNrDZKQZLFhUwUM3ZzYb8SyFYgNv0wGM5jBn4F+rQGMSch+lE9QkpGME5SSx8DeH29zAor6IDm1rTZHAAAAAElFTkSuQmCC",
+                "label": "Oregon"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHdJREFUOI3t1CEOgDAUA9CKwSQGww1AIrhV78A/RA9HMBgSDAY7hWIBO1BkVT9fvFTV4eO46yBpbyBJFkGSNnRhbOqQhE2LB0lIstiwqQP69kjsV2FeC8SGXyaDGczgz8Bp8QCqJGTbyycoyUjGCUrJY2Dvj7c5AVWMH/XgCRFUAAAAAElFTkSuQmCC",
+                "label": "Pennsylvania"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHdJREFUOI3t1CEKgEAUBNAJBoNpwQOsVbzZ3MF/iLmeiGFBEEyGjSYXratJdtLnh8ekqfBxqusgaW8gSZZAkjb4Y2xdzMKm0IAkJFlq2LqIvpsz+3ksa43U8MsUsIAF/Bk4hQaAz0K2vX6CkoxkmqCcPAb2/nibEweIIBlqx270AAAAAElFTkSuQmCC",
+                "label": "Puerto Rico"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHNJREFUOI3t1KENgDAUBNCjYQVcNwCLZKPbgT/EbQa6CQmOHRoUDSBbFOmpny9eTl2Lj9NeB0krgSRZAknaNLjZd3nYEiJIQpKlhr4Dxr7J7OewbhGp4ZepYAUr+DNwCRGAy0L24wVKMpJpgnLyGNj7ozQnpFkf0Sa5EYwAAAAASUVORK5CYII=",
+                "label": "Rhode Island"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHFJREFUOI3t1DEKgDAQBMArbKxU7IX4vv2D94h9YiCCCJJCWyuDac9Ukq2OK4attpHCaZ4DgH6BSGoCAaibumXsWxPmQxQAQlJTw7FvZXaDueG6nZIalkwFK1jBn4E+RDOyH1cOklQAaYIsyQb2/fiaG/0EIOZ7TMe3AAAAAElFTkSuQmCC",
+                "label": "South Carolina"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3t1CEOgDAUA9CKBQECxASGcMHegX+I3nEGMQQhQaFYmB0osqqfL16q6vBx3H2QtDeQJEsgSZv8sQzdWYSF2IIkJFlqOHQn5nEt7Oexbj1Swy9TwQpW8GdgiC0AX4TEvclBSUYyTVBJsoF9Pt7mAqDRIC4tkG52AAAAAElFTkSuQmCC",
+                "label": "South Dakota"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3t1C0KgEAUBODxL9kEwaj3mzv4DjFnFJNiMAmuyUXrrkl20uOFj0lT4uOU90HSYiBJ5kGS1rfn2NQuCJvWHCQhyXzDpnYYuiOwX4V5K+AbfpkEJjCBPwOnNQdQBSHLnr1BSUbST1BIXgP7fMTmAo3UH/8yem1eAAAAAElFTkSuQmCC",
+                "label": "Tennessee"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychpUZDjrhQXYyDLs8YvvDDk5OQxTpkxpgLtQWICNQUWOm2wXPnvziwHuQmqCUQNHDRw1cJgZ+PjFd7INefvhF6qBU6ZMacjJyYEXQeQAlAIWWYBSAADNMyDnDBwuowAAAABJRU5ErkJggg==",
+                "label": "Texas"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHBJREFUOI3t1CEOgDAQBMATDZIg+ofC3/YP3CP2f60AV9uQoFA01LZVpKsuJyar1kjnmPcAoC0QSc0gAN3cvFs7VWE+JAEgJDU3tHaS1S3VDY/zktywZwY4wAH+DPQhVSMx3iVIUgHkCapJMbDfR2seOrog32y+EWIAAAAASUVORK5CYII=",
+                "label": "United States Virgin Islands"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHVJREFUOI3t1DEKgDAUA9CgQkcHR8HJ4+UO/kPkhoLQwcHRweJksWvtJM30+cMjUzoUTvccJO0LJMkiSNLm8VqGPmRhq29BEpIsNhz6gHk6M/s5bHuD2LBkKljBCv4MXH0LwGUh+9GkoCQjGScoJ8nAvh9fcwPA4h/5ksUpmAAAAABJRU5ErkJggg==",
+                "label": "Utah"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEKgEAUBNAJK5hF7JoNHmzu4D/E3M5gEkTELFhMLm5dN8lO+vzwmDQOieOeg6R9gSSZB0na0J5jU11R2LSUIAlJ5hs21YW+2yP71ZjXAr5hymQwgxn8GTgtJYA6CtmOIgQlGUk/QTEJBvb9+JobEp4gAu3BN8gAAAAASUVORK5CYII=",
+                "label": "Vermont"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEOgDAUA9AKEswUwQAngLP1DvxD9H4TJKglGBBzKBawA0VW9fPFS1UrfJzqOkjaG0iSJZCkTd0xty5mYT44kIQkSw1bFzEOa2a/HsvWIDX8MgUsYAF/BvrgAPRZSNjrJyjJSKYJysljYO+PtzkBAR8gMcF+x/wAAAAASUVORK5CYII=",
+                "label": "Virginia"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHhJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychpsTX7Xy0j8IcuwyzfYGHJychimTJnSAHehjMQfBlP9z2S6j5fhyh1OBrgLqQlGDRw1cNTAYWbg5RtsDAwMvGQZ8uQFwl0sDAyQwjEnJwdeBJEDUApYZAFKAQDRlB/t2wvJCgAAAABJRU5ErkJggg==",
+                "label": "Washington"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3t1DEKgDAUA9CAdnG3l7CDB8sd/IfI7QqKq+4uIjhZdK1O0kyfPzwypcbHqa+DpL2BJFkCSVof9sG3RxYWRweSkGSpoW8PhG7L7Ndgmiukhl+mgAUs4M/AODoATRayrNUTlGQk0wTl5DGw98fbnEw3H+4EvCcvAAAAAElFTkSuQmCC",
+                "label": "West Virginia"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHBJREFUOI3t1DEKgDAQBMArYiGC6VV84f7Be8R+0oCCVqKNlYe2SSrJVscVw1brJHPccwDQFIikGghA+66efFtFYXM4BICQVGvo20rGoYluuKynWMOcKWABC/gzcA5HNLLt1xckqQBsgmLyGdj3IzU3iEcg8bLd0GEAAAAASUVORK5CYII=",
+                "label": "Wisconsin"
+            }, {
+                "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHFJREFUOI3t1CEOgDAQBMATJSGhjmDw8Lr9A/eI/WGDJCCqqEHRUNtWka66nJisWiOVY94DgJZAJDWCAHSZ7m20IQtzZy8AhKTGhqMNss4+u+F+DRIb1kwDG9jAn4Hu7LORw3cpSFIBxAnKSTKw30dpHoqHIAJwBO9uAAAAAElFTkSuQmCC",
+                "label": "Wyoming"
+            }]
+        },
+        {
+            "name": "stretched legend",
+            "type": "stretched",
+            "elements": [
+                {"label": "High : 4", "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAF1JREFUOI2t0sENgDAMQ9E4pHULF5iA/cdjgKos8T3Ak5y4vtc7wJQekoso3TR40eDJiqVhFgx3FtRoMDgPFgwXC2rClaPBX5bhGyYNrgGDKnqHThZc9A6zw+CGwR+9jAZatYouQAAAAABJRU5ErkJggg=="},
+                {"label": "", "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFdJREFUOI2t0oENgDAIRFGiQDd0Y3dqCngu8TvAC/dT3+8jA59bOumZ27pZUAmD+GQFPpm+kG74rWRBBT1ZFwvWwA1rggV74IY9dMOGGx5+MgwWD7Lf5gdcuB2P8+YnfgAAAABJRU5ErkJggg=="},
+                {"label": "Low : 0", "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFpJREFUOI2t0oENgCAMRFHU7j+CqzgIYxgjkIIu8TrAz/Xux1XPr8CLnLvklRjzsMBMDOw64dTAvsICh+5waG34KDwhF5u/3JYeRWvTEid8dYf32izw4StjsX/siyj7Hs38/gAAAABJRU5ErkJggg=="}
+            ]
+        }
+    ];
 
-        var legends2 = [{"elements": [{"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3Nychq0VAXrRYS5yDLs/uNPDDk5OQxTpkxpgLtQRJiLQVNNlGwXPn76mQHuQmqCUQNHDRw1cJgZeP/xJ7INefP2G6qBU6ZMacjJyYEXQeQAlAIWWYBSAABjPiDfvMzQCwAAAABJRU5ErkJggg==", "label": "Alabama"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1LEJgDAUBNArLBTcIOAQgiC40u3gH+JWS+wFRxBbK4NpEyvJVZ9fPK66Bh+neQ6SVgJJsgiStGU+V+euLMyHHiQhyWJD5y5M457Zb4DfWsSGX6aCFazgz0AfegBDFnIcXQpKMpJxgnKSDOz7UZobwRof/EtWWjIAAAAASUVORK5CYII=", "label": "Alaska"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHdJREFUOI3t1LEJgDAUBNArAqKFigOIE2Sy28E/xE3mEhY2ghKwszJoG60kV31+8bjqHD6Ouw6S9gaSZBEkaX2zjW0RkrB5r0ESkiw2bIuAoZsS+3ksoURs+GUymMEM/gyc9xqAT0LWo3qCkoxknKCUPAb2/nibEz9YID+C5WnLAAAAAElFTkSuQmCC", "label": "American Samoa"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychrMjdnqJSWYyTLs+s1fDDk5OQxTpkxpgLtQUoKZwUifnWwX3rzznQHuQmqCUQNHDRw1cJgZeP3mL7INef7iL6qBU6ZMacjJyYEXQeQAlAIWWYBSAABdnCDEK8+a1AAAAABJRU5ErkJggg==", "label": "Arizona"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHVJREFUOI3t1DEKgDAUA9BAdREHFwcRPGHu4D9ELimIKIiLCE4Wu9ZO0kyfPzwypUDiFM9B0r5AksyDJK1vz7GpryhsWkqQhCTzDZv6wtAdkf0qzJuDb5gyGcxgBn8GTksJoIpC1t2FoCQj6ScoJsHAvh9fcwNwuCAJfF06ZQAAAABJRU5ErkJggg==", "label": "Arkansas"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHhJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3Nychqs5L/USwt9I8uwq0/5GHJychimTJnSAHehtNA3BhPFW2S6T43h2isOBrgLqQlGDRw1cNTAYWbg1ad8DAwMamQZ8vQdF6qBU6ZMacjJyYEXQeQAlAIWWYBSAABD3yAXz6ciHQAAAABJRU5ErkJggg==", "label": "California"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHNJREFUOI3t1CEOgDAUA9AKEswU0wgIx+sd+IfoDbcQDBKBQ7Ewu6HIqn6+eKlqh4/TPQdJq4EkWQJJ2jKdq/dXERaiA0lIstTQ+wvLHAr7jdj2Aanhl2lgAxv4MzBEB2AsQo6jz0FJRjJNUEmygX0/anMDJu8gLm+NUC0AAAAASUVORK5CYII=", "label": "Colorado"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychpsrSXqZaS5yTLs8tW3DDk5OQxTpkxpgLtQRpqbwdRUimwXXrn6gQHuQmqCUQNHDRw1cJgZePnqW7INefL0K6qBU6ZMacjJyYEXQeQAlAIWWYBSAABHTiC+xEdgBwAAAABJRU5ErkJggg==", "label": "Commonwealth of the Northern Mariana Islands"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEOgDAUA9AmDIPEYQkXQHCr3oF/iB6O4Jc5JIaQoFiYHSiyqp8vXqrq8HHcfZC0N5AkiyBJm/pj7tozC1t8DZKQZLFh154Yhz2zX4M1VIgNv0wBC1jAn4GLrwE0WUjYqhSUZCTjBOUkGdjn420uREUf8WHpWb0AAAAASUVORK5CYII=", "label": "Connecticut"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHNJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3Nychq01DnqRURY8GrCBe4/+MmQk5PDMGXKlAa4CSIiLAyaauxku/Dx098McBdSE4waOGrgqIHDzMD7D36SbcibN39QDZwyZUpDTk4OvAgiB6AUsMgClAIABEEg3T001t0AAAAASUVORK5CYII=", "label": "Delaware"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHVJREFUOI3t1CEKgEAUBNAJYtighk2ieMG5g/8Qc0dBFhGLYDK5aF1NspM+PzwmTYGPU1wHSXsDSbIIkrS+3cemOpKwaXYgCUkWGzbVgaELif08wlIjNvwyGcxgBn8GTrMD4JOQdSufoCQjGScoJY+BvT/e5gS/+CApAODx9AAAAABJRU5ErkJggg==", "label": "District of Columbia"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHBJREFUOI3t1CEOgDAQBMATDYpSh4CEF+4fuEfsJyuaQBBNUCgaatsq0lWXE5NVa6RxzHsA0BqIpCYQgK7zuDs7FGE+RAEgJDU1dHaQbZmKG4YjSmrYMh3sYAd/BvoQi5HzunOQpAJIE1SSbGC/j9o8jvIg869XoCgAAAAASUVORK5CYII=", "label": "Florida"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHNJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqsNFjrpUVY8GrCBa4++MWQk5PDMGXKlAa4CdIiLAwmGmxku/Dak+8McBdSE4waOGrgqIHDzMCrD36RbcjTN39QDZwyZUpDTk4OvAgiB6AUsMgClAIAPHIgyFuh12MAAAAASUVORK5CYII=", "label": "Georgia"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHFJREFUOI3t1CEOgDAUA9CyoDAzCBISTtg78A/RSyJIBgK5oFgAuaHIqn6+eKlqi4/TXgdJK4EkWQJJ2ti72Xd52BIiSEKSpYa+A6ahyeznsO4RqeGXqWAFK/gzcAkRgMtCtuMFSjKSaYJy8hjY+6M0J3C6H/m7koqKAAAAAElFTkSuQmCC", "label": "Guam"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHhJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqMNb7US4h+I8uwm/f5GHJychimTJnSAHehhOg3Bn2NW2S6T43hzhMOBrgLqQlGDRw1cNTAYWbgzft8DAwMamQZ8uI1F6qBU6ZMacjJyYEXQeQAlAIWWYBSAABNMCAXkE9UdgAAAABJRU5ErkJggg==", "label": "Hawaii"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqsLX/XS0v9Jcuwq9fYGHJychimTJnSAHehtNRfBlOT72S78Op1Dga4C6kJRg0cNXDUwGFm4NVrbGQb8vQZM6qBU6ZMacjJyYEXQeQAlAIWWYBSAAC81h/XYNsVbAAAAABJRU5ErkJggg==", "label": "Idaho"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3t1DEKgDAUA9BAxV3oKrjq2XIH/yFyPweHDgruQsHJYtfqJM30+cMjUxp8nOY+SNobSJIlkKRNvZt954qwJUSQhCRLDX3nMA5tYb8T6xaRGn6ZClawgj8DlxABnEXIfsQclGQk0wSVJBvY5+NtLq49It0S21iDAAAAAElFTkSuQmCC", "label": "Illinois"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqsDcXqpSV4yDLs6q13DDk5OQxTpkxpgLtQWoKHwVRXimwXXr37gQHuQmqCUQNHDRw1cJgZePXWO7INefriC6qBU6ZMacjJyYEXQeQAlAIWWYBSAAAUSSDHlzF1TAAAAABJRU5ErkJggg==", "label": "Indiana"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEKgEAUBNAJG0RYk0kwGfRwcwf/IeZ6BsGmWBSzyUXrapKd9PnhMWkcPo67DpL2BpJkASRpbbX3pT+isHEuQBKSLDQs/YGuHiL7NZjWDKHhl0lgAhP4M3CcCwBNFLJs+ROUZCTDBMXkMbD3x9ucwUIgKCFLDNIAAAAASUVORK5CYII=", "label": "Iowa"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHdJREFUOI3tlCEOgDAQBFc0TRBU1ZGg4W/7B/qI+x8GRcCABIEgHGBLFemoy4nJqDVIjLkOkuGLSESCCkmGtto67/YoWT9akISIBC30bkdTr5F9JYa5gBamJAuzMAt/JuxHC6CMkkzL3WWAcxxJ6gTF8BrY5+MrB/LXIA7fYk0EAAAAAElFTkSuQmCC", "label": "Kansas"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqsLRXqpaUEyTLs6rWnDDk5OQxTpkxpgLtQWkqQwdREiWwXXr3+igHuQmqCUQNHDRw1cJgZePXaU7INefrsPaqBU6ZMacjJyYEXQeQAlAIWWYBSAAB7yiC9RwZEWwAAAABJRU5ErkJggg==", "label": "Kentucky"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHNJREFUOI3t1DEKgDAUA9CgQnfdRcTj5Q7+Q+SIoiDo7mBxsti1Okkzff7wyJQKH6e6D5L2BpJkASRpfXuOTe2TsGkuQRKSLDRsao+hOxL7OSxrgdDwy2Qwgxn8GTjNJQCXhGx7EYOSjGSYoJREA/t8vM0F2Bwf943gsPwAAAAASUVORK5CYII=", "label": "Louisiana"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHhJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqMtb/XS4j+Isuwm/c4GXJychimTJnSAHehhOgvBn2tV2S6T4zhziM2BrgLqQlGDRw1cNTAYWbgzXucDAwMYmQZ8uI1G6qBU6ZMacjJyYEXQeQAlAIWWYBSAABbmx//EnO/8QAAAABJRU5ErkJggg==", "label": "Maine"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAG9JREFUOI3t1LENgCAUBNCfSFwAZkCHux38Q9yCEO10AAsSK4m0QGW46ucXL1edkc4x7wFAWyCSmkEAuvi0OZuqsBCNABCSmhs6m2T1d3XD/ZglN+yZAQ5wgD8DQ6y3z2sqQZIKIE9QTYqB/T5a8wD6iR/t13QryAAAAABJRU5ErkJggg==", "label": "Maryland"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHNJREFUOI3t1DEKgDAUA9AMQheR4qjgCXMH/yFyRkFwcKnQzcli19ZJmunzh0emdPg43XOQtBpIkiWQpM1DWL2LRdgeepCEJEsNvYtY/FbYb8JxjUgNv0wDG9jAn4F76AFMRcgZXQ5KMpJpgkqSDez7UZsbbycgPmjCgxUAAAAASUVORK5CYII=", "label": "Massachusetts"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3t1LENgDAQA0BHMAXKDjRQspF34IfwZiCloEVsgUJFRNpAheLq9cXJlVt8nPY+SNobSJIlkKRNQ5x9F4uwJTiQhCRLDX0XMfZnYb8G6+aQGn6ZClawgj8Dl+AANEXIfrgclGQk0wSVJBvY5+NtLrwUH872hb1yAAAAAElFTkSuQmCC", "label": "Michigan"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHdJREFUOI3t1KENgDAUBNAThJDUYkgXYAEUK90O/CFutXoEBIOnEkUDtqBIT/188XLqKnyc6jpI2htIkiWQpI39Mfk2ZmFhdiAJSZYa+jZi6LfMfh3CUiM1/DIFLGABfwaG2QHospB1b56gJCOZJignj4G9P97mBHLVIAFKsL/mAAAAAElFTkSuQmCC", "label": "Minnesota"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEKgEAUBNAJBsENFsEi4v3mDv5DzP2MFmEVFIwmF7euJtlJnx8ek6bAxynug6S9gSRZAEla1+xjXZ1J2OwdSEKShYZ1daJvp8R+A5atRGj4ZTKYwQz+DJy9AzAkIetRxqAkIxkmKCXRwD4fb3MBaFggK3xjDMEAAAAASUVORK5CYII=", "label": "Mississippi"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychrMDeXrJSWEyDLs+q2nDDk5OQxTpkxpgLtQUkKIwUhXkWwX3rz7igHuQmqCUQNHDRw1cJgZeP3WU7INef7iHaqBU6ZMacjJyYEXQeQAlAIWWYBSAAA3dyDCckDcOAAAAABJRU5ErkJggg==", "label": "Missouri"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI3t1C0OgDAMhuGKge4F+Dngdwd6iO+OEyDmSBYEioUJEBuK7FXLkj6pqpOPc9cDgNVAJC2BAGwcukXVvQ495X0UAELSkqDqZJ764g3XbZe04Zc1sIEN/BnofSxGQjhykKQBSCeopOzA3j9qOwFtkSDhp7unvQAAAABJRU5ErkJggg==", "label": "Montana"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1KERgDAUA9CIQiUGiYYJkGyUHfhDZDMYAAEOg61C0QNbUFyj/n3xLioOH8ddB0l7A0myCJK0oQtjU4ckbFo8SEKSxYZNHdC3R2K/CvNWIDb8MhnMYAZ/Bk6LB1AlIetePkFJRjJOUEoeA3t/vM0Ja1of7tM8LdsAAAAASUVORK5CYII=", "label": "Nebraska"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychqsjPjrpcU5yTLs6q1PDDk5OQxTpkxpgLtQWpyTwURfkGwXXrv7jQHuQmqCUQNHDRw1cJgZePXWJ7INefryO6qBU6ZMacjJyYEXQeQAlAIWWYBSAADZ0iDKFsXFGQAAAABJRU5ErkJggg==", "label": "Nevada"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1KENgDAUBNATGAiiQWBIWIHFbgf+ELcYYzRBQCBoFA21LYr01M8XL6euwsepnoOk5UCSLIAkbeiO2TVnEuZ3B5KQZKGha06M/ZLYb8J61AgNv0wBC1jAn4F+dwCmJGS72hiUZCTDBKUkGtj3Izc3T/YgQUL8cRUAAAAASUVORK5CYII=", "label": "New Hampshire"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEOgDAUA9CKCYKZgkMAgoP1DvxD9GyYJRAsSBI0igXsQJFV/XzxUlWHj+Oug6S9gSRZBEla3+1DXR1JWJg8SEKSxYZ1daBrx8R+DealQGz4ZTKYwQz+DAyTB9AkIetWPkFJRjJOUEoeA3t/vM0JR+8gHbHAERoAAAAASUVORK5CYII=", "label": "New Jersey"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychoMVH/XS4j8JcuwW4/YGHJychimTJnSAHehhMhfBl2172S78N5TDga4C6kJRg0cNXDUwGFm4K1HbGQb8uINM6qBU6ZMacjJyYEXQeQAlAIWWYBSAAApph/pkT9qjAAAAABJRU5ErkJggg==", "label": "New Mexico"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychpMTXjqJSXYyDLsxs3vDDk5OQxTpkxpgLtQUoKNwVCfj2wX3rr9nQHuQmqCUQNHDRw1cJgZeOPmd7INef7iF6qBU6ZMacjJyYEXQeQAlAIWWYBSAACsDSDOf6EmywAAAABJRU5ErkJggg==", "label": "New York"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3Nychp01STqRUV4yDLs7sO3DDk5OQxTpkxpgLtQVISHQVtNmmwXPnz6ngHuQmqCUQNHDRw1cJgZePfhW7INef3mC6qBU6ZMacjJyYEXQeQAlAIWWYBSAACaSCDYi4kBOQAAAABJRU5ErkJggg==", "label": "North Carolina"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAG9JREFUOI3t1LENgCAUBNAfZATYgehqt4N/iJvPEGOnK0CsJNoCleGqn1+8XHVWOsc+BwBtgUhqAQHoEqbVO1OFbTEJACGppaF3RuYwVTfcjyylYc8McIAD/Bm4xVSNnFf+giQVQJmgmnwG9v1ozQ38PyDgWKDwogAAAABJRU5ErkJggg==", "label": "North Dakota"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3Nychp0FZnrRYWZyDLs7tO/DDk5OQxTpkxpgLtQVJiJQVuJmWwXPnz+jwHuQmqCUQNHDRw1cJgZePfpX7INef32H6qBU6ZMacjJyYEXQeQAlAIWWYBSAADfsyDhTpO2QgAAAABJRU5ErkJggg==", "label": "Ohio"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEOgDAUA9AKBGECM8EJINnZegf+IXo2PAKHgBDQKBawA0VW9fPFS1ULfJziOkjaG0iSRZCktX7rvTuSsHGpQRKSLDb07kDXDIn9Aqa1RGz4ZTKYwQz+DByXGkBIQua9eoKSjGScoJQ8Bvb+eJsToNEgM71yhi8AAAAASUVORK5CYII=", "label": "Oklahoma"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHdJREFUOI3t1LEJgDAUBNAr0igotoKIEzjZ7eAf4iZziRSKCEJqK4O20Upy1ecXj6vO4eO46yBpbyBJFkGS1rfH1FQhCfNrDZKQZLFhUwUM3ZzYb8SyFYgNv0wGM5jBn4F+rQGMSch+lE9QkpGME5SSx8DeH29zAor6IDm1rTZHAAAAAElFTkSuQmCC", "label": "Oregon"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHdJREFUOI3t1CEOgDAUA9CKwSQGww1AIrhV78A/RA9HMBgSDAY7hWIBO1BkVT9fvFTV4eO46yBpbyBJFkGSNnRhbOqQhE2LB0lIstiwqQP69kjsV2FeC8SGXyaDGczgz8Bp8QCqJGTbyycoyUjGCUrJY2Dvj7c5AVWMH/XgCRFUAAAAAElFTkSuQmCC", "label": "Pennsylvania"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHdJREFUOI3t1CEKgEAUBNAJBoNpwQOsVbzZ3MF/iLmeiGFBEEyGjSYXratJdtLnh8ekqfBxqusgaW8gSZZAkjb4Y2xdzMKm0IAkJFlq2LqIvpsz+3ksa43U8MsUsIAF/Bk4hQaAz0K2vX6CkoxkmqCcPAb2/nibEweIIBlqx270AAAAAElFTkSuQmCC", "label": "Puerto Rico"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHNJREFUOI3t1KENgDAUBNCjYQVcNwCLZKPbgT/EbQa6CQmOHRoUDSBbFOmpny9eTl2Lj9NeB0krgSRZAknaNLjZd3nYEiJIQpKlhr4Dxr7J7OewbhGp4ZepYAUr+DNwCRGAy0L24wVKMpJpgnLyGNj7ozQnpFkf0Sa5EYwAAAAASUVORK5CYII=", "label": "Rhode Island"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHFJREFUOI3t1DEKgDAQBMArbKxU7IX4vv2D94h9YiCCCJJCWyuDac9Ukq2OK4attpHCaZ4DgH6BSGoCAaibumXsWxPmQxQAQlJTw7FvZXaDueG6nZIalkwFK1jBn4E+RDOyH1cOklQAaYIsyQb2/fiaG/0EIOZ7TMe3AAAAAElFTkSuQmCC", "label": "South Carolina"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3t1CEOgDAUA9CKBQECxASGcMHegX+I3nEGMQQhQaFYmB0osqqfL16q6vBx3H2QtDeQJEsgSZv8sQzdWYSF2IIkJFlqOHQn5nEt7Oexbj1Swy9TwQpW8GdgiC0AX4TEvclBSUYyTVBJsoF9Pt7mAqDRIC4tkG52AAAAAElFTkSuQmCC", "label": "South Dakota"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3t1C0KgEAUBODxL9kEwaj3mzv4DjFnFJNiMAmuyUXrrkl20uOFj0lT4uOU90HSYiBJ5kGS1rfn2NQuCJvWHCQhyXzDpnYYuiOwX4V5K+AbfpkEJjCBPwOnNQdQBSHLnr1BSUbST1BIXgP7fMTmAo3UH/8yem1eAAAAAElFTkSuQmCC", "label": "Tennessee"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHJJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychpUZDjrhQXYyDLs8YvvDDk5OQxTpkxpgLtQWICNQUWOm2wXPnvziwHuQmqCUQNHDRw1cJgZ+PjFd7INefvhF6qBU6ZMacjJyYEXQeQAlAIWWYBSAADNMyDnDBwuowAAAABJRU5ErkJggg==", "label": "Texas"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHBJREFUOI3t1CEOgDAQBMATDZIg+ofC3/YP3CP2f60AV9uQoFA01LZVpKsuJyar1kjnmPcAoC0QSc0gAN3cvFs7VWE+JAEgJDU3tHaS1S3VDY/zktywZwY4wAH+DPQhVSMx3iVIUgHkCapJMbDfR2seOrog32y+EWIAAAAASUVORK5CYII=", "label": "United States Virgin Islands"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHVJREFUOI3t1DEKgDAUA9CgQkcHR8HJ4+UO/kPkhoLQwcHRweJksWvtJM30+cMjUzoUTvccJO0LJMkiSNLm8VqGPmRhq29BEpIsNhz6gHk6M/s5bHuD2LBkKljBCv4MXH0LwGUh+9GkoCQjGScoJ8nAvh9fcwPA4h/5ksUpmAAAAABJRU5ErkJggg==", "label": "Utah"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEKgEAUBNAJK5hF7JoNHmzu4D/E3M5gEkTELFhMLm5dN8lO+vzwmDQOieOeg6R9gSSZB0na0J5jU11R2LSUIAlJ5hs21YW+2yP71ZjXAr5hymQwgxn8GTgtJYA6CtmOIgQlGUk/QTEJBvb9+JobEp4gAu3BN8gAAAAASUVORK5CYII=", "label": "Vermont"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHZJREFUOI3t1CEOgDAUA9AKEswUwQAngLP1DvxD9H4TJKglGBBzKBawA0VW9fPFS1UrfJzqOkjaG0iSJZCkTd0xty5mYT44kIQkSw1bFzEOa2a/HsvWIDX8MgUsYAF/BvrgAPRZSNjrJyjJSKYJysljYO+PtzkBAR8gMcF+x/wAAAAASUVORK5CYII=", "label": "Virginia"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHhJREFUOI1jYaAyYIExcnJyGigxaMqUKQ1wA3NychpsTX7Xy0j8IcuwyzfYGHJychimTJnSAHehjMQfBlP9z2S6j5fhyh1OBrgLqQlGDRw1cNTAYWbg5RtsDAwMvGQZ8uQFwl0sDAyQwjEnJwdeBJEDUApYZAFKAQDRlB/t2wvJCgAAAABJRU5ErkJggg==", "label": "Washington"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHRJREFUOI3t1DEKgDAUA9CAdnG3l7CDB8sd/IfI7QqKq+4uIjhZdK1O0kyfPzwypcbHqa+DpL2BJFkCSVof9sG3RxYWRweSkGSpoW8PhG7L7Ndgmiukhl+mgAUs4M/AODoATRayrNUTlGQk0wTl5DGw98fbnEw3H+4EvCcvAAAAAElFTkSuQmCC", "label": "West Virginia"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHBJREFUOI3t1DEKgDAQBMArYiGC6VV84f7Be8R+0oCCVqKNlYe2SSrJVscVw1brJHPccwDQFIikGghA+66efFtFYXM4BICQVGvo20rGoYluuKynWMOcKWABC/gzcA5HNLLt1xckqQBsgmLyGdj3IzU3iEcg8bLd0GEAAAAASUVORK5CYII=", "label": "Wisconsin"}, {"imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAHFJREFUOI3t1CEOgDAQBMATJSGhjmDw8Lr9A/eI/WGDJCCqqEHRUNtWka66nJisWiOVY94DgJZAJDWCAHSZ7m20IQtzZy8AhKTGhqMNss4+u+F+DRIb1kwDG9jAn4Hu7LORw3cpSFIBxAnKSTKw30dpHoqHIAJwBO9uAAAAAElFTkSuQmCC", "label": "Wyoming"}], "name": "States by Name"}]
+    var legend = L.control.base64legend({
+        position: 'bottomright',
+        legends: legends,
+        collapseSimple: true
+    });
 
-        var legends = legends1.concat(legends2);
+    map.addControl(legend);
 
-        // TODO:
-        var legend = L.control.base64legend({
-            position: 'bottomright',
-            legends: legends,
-            collapseSimple: true
-        });
-
-        map.addControl(legend);
-
-    </script>
+</script>
 </body>
 </html>

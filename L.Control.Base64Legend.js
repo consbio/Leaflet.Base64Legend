@@ -49,10 +49,9 @@ L.Control.Base64Legend = L.Control.extend({
 
         legends.forEach(function(legend) {
             var className = 'legend-block';
-
-            // if (legend.className) {
-            //     className += ' ' + legend.className
-            // }
+            if (legend.type === 'stretched') {
+                className += ' legend-stretched';
+            }
 
             var block = L.DomUtil.create('div', className, this._container);
             // TODO: allow block to be expanded / contracted by clicking on
@@ -68,11 +67,9 @@ L.Control.Base64Legend = L.Control.extend({
                 header.innerHTML = legend.name;
             }
 
-            // TODO: stretched legend needs something different entirely
             legend.elements.forEach(function (element) {
                 this._addElement(element.imageData, element.label, block);
             }, this);
-
         }, this);
     },
 
@@ -83,8 +80,6 @@ L.Control.Base64Legend = L.Control.extend({
             L.DomUtil.create('label', null, row).innerHTML = label;
         }
     }
-
-
 });
 
 L.control.base64legend = function (options) {
