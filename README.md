@@ -36,6 +36,18 @@ Include the JavaScript:
 ```
 
 
+Options:
+```
+{
+    position: 'topright',
+    legends: [],   // array of legend entries - see README for format
+    collapseSimple: false,  // if true, legend entries that are from a simple renderer will use compact presentation
+    detectStretched: false  // if true, will test to see if legend entries look stretched.  These are usually in sets of 3 with the middle element having no label.
+}
+```
+
+
+
 Inputs are an array of legends.  Each legend has:
 * name
 * array of elements
@@ -57,7 +69,7 @@ var legends = [{
 var legend = L.control.base64legend({
     position: 'topright',
     legends: legends,
-    collapseSimple: true  // if true, single element legends that have no label will be use the name of the legend instead on a single line
+    collapseSimple: true
 });
 
 map.addControl(legend);
@@ -93,6 +105,18 @@ var legends = [{
     ]
 }];
 ```
+
+
+You can also have the plugin auto-detect stretched legends.  Typically,
+these are identified by legends 3 elements long, where the label for the
+middle element is blank.
+```
+var legend = L.control.base64legend({
+    ... 
+    detectStretched: true
+});
+```
+
 
 
 

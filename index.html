@@ -208,7 +208,7 @@
         },
         {
             "name": "stretched legend",
-            "type": "stretched",
+//            "type": "stretched",
             "elements": [
                 {"label": "High : 4", "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAF1JREFUOI2t0sENgDAMQ9E4pHULF5iA/cdjgKos8T3Ak5y4vtc7wJQekoso3TR40eDJiqVhFgx3FtRoMDgPFgwXC2rClaPBX5bhGyYNrgGDKnqHThZc9A6zw+CGwR+9jAZatYouQAAAAABJRU5ErkJggg=="},
                 {"label": "", "imageData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAFdJREFUOI2t0oENgDAIRFGiQDd0Y3dqCngu8TvAC/dT3+8jA59bOumZ27pZUAmD+GQFPpm+kG74rWRBBT1ZFwvWwA1rggV74IY9dMOGGx5+MgwWD7Lf5gdcuB2P8+YnfgAAAABJRU5ErkJggg=="},
@@ -220,7 +220,8 @@
     var legend = L.control.base64legend({
         position: 'topright',
         legends: legends,
-        collapseSimple: true
+        collapseSimple: true,
+        detectStretched: true
     });
 
     map.addControl(legend);
