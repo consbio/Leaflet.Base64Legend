@@ -4,7 +4,7 @@
     padding: 6px;
     max-height: 250px;
     overflow-y: auto;
-    font-size: 1.2em;
+    line-height: 1.2;
 }
 
 .leaflet-legend h4 {
@@ -17,6 +17,7 @@
 
 .leaflet-legend h4 > span {
     margin-left: 18px;
+    color: #333;
 }
 
 .leaflet-legend h4.closed + .legend-elements {
@@ -34,6 +35,7 @@
     display: inline-block;
     vertical-align: middle;
     word-wrap: break-word;
+    color: #555;
 }
 
 .legend-block {
@@ -47,12 +49,8 @@
     padding-top: 4px;
 }
 
-.legend-row {
-    line-height: 1;
-}
-
 .legend-row + .legend-row {
-    margin-top: 4px;
+    margin-top: 8px;
 }
 
 .legend-stretched .legend-row + .legend-row {
