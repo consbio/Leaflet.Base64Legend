@@ -7,7 +7,7 @@ Under active development!
 
 See the [example](//consbio.github.io/Leaflet.Base64Legend).
 
-*Tested with Leaflet 1.0.0-rc3*
+*Tested with Leaflet 1.0.3*
 
 
 

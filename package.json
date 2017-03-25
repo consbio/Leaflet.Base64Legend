@@ -1,6 +1,6 @@
 {
 	"name": "leaflet-base64-legend",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Leaflet legend plugin using base64 elements",
   	"homepage": "http://github.com/consbio/Leaflet.Base64Legend",
   	"author": {
