@@ -1,6 +1,6 @@
 L.Control.Base64Legend = L.Control.extend({
     _map: null,
-    includes: L.Mixin.Events,
+    includes: L.Evented ? L.Evented.prototype : L.Mixin.Events,
     options: {
         position: 'topright',
         legends: [],   // array of legend entries - see README for format
@@ -27,7 +27,7 @@ L.Control.Base64Legend = L.Control.extend({
     render: function () {
         L.DomUtil.empty(this._container);
         var legends = this.options.legends;
-        
+
         if (!legends) return;
 
         legends.forEach(function(legend) {

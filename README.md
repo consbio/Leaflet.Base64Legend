@@ -7,7 +7,7 @@ Under active development!
 
 See the [example](//consbio.github.io/Leaflet.Base64Legend).
 
-*Tested with Leaflet 1.0.3*
+*Tested with Leaflet 1.1.0*
 
 
 
@@ -112,7 +112,7 @@ these are identified by legends 3 elements long, where the label for the
 middle element is blank.
 ```
 var legend = L.control.base64legend({
-    ... 
+    ...
     detectStretched: true
 });
 ```
@@ -123,3 +123,4 @@ var legend = L.control.base64legend({
 ## Contributors:
 * [Brendan Ward](https://github.com/brendan-ward)
 * [Nik Molnar](https://github.com/nikmolnar)
+* [Kaveh Karimi](https://github.com/ka7eh)
